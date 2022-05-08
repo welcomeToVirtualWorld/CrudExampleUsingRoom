@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="myViewModel"
+            type="com.example.crudexampleusingroom.viewmodel.SubscriberViewModel" />
+        <variable
+            name="presenter"
+            type="com.example.crudexampleusingroom.Presenter" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.MainActivity">
+        <EditText
+            android:hint="Enter name"
+            android:text="@={myViewModel.inputName}"
+            android:id="@+id/edt_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:hint="Enter Email"
+            android:id="@+id/edt_email"
+            android:text="@={myViewModel.inputEmail}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/btn_save"
+                android:text="@={myViewModel.saveButton}"
+                android:onClick="@{() -> myViewModel.saveOrUpdate()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btn_clear"
+                android:text="@={myViewModel.clearButton}"
+                android:onClick="@{() -> myViewModel.clearAllOrDelete()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_subscribers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</layout>
